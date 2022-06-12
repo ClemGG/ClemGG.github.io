@@ -1,0 +1,956 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+
+body{
+    background: black;
+}
+
+/*----- ANIMATIONS ON SCROLL -----*/
+
+
+
+.reveal {
+    position: relative;
+    opacity: 0;
+}
+
+.reveal.active {
+    opacity: 1;
+}
+
+.active.fade-bottom {
+    animation: fade-bottom 0.75s ease-out;
+}
+
+
+@keyframes fade-bottom {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/*----- INDEX -----*/
+
+.home{
+    height: 100vh;
+    width: 100%;
+
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-title{
+    text-align: center;
+    color: white;
+}
+
+.home-title h1{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.home-title p{
+    font-size: 30px;
+    font-weight: 200;
+    margin-bottom: 50px;
+}
+
+
+
+.btn{
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: white;
+    background: transparent;
+
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+    position: relative;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+
+.video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+@media (max-width: 700px){
+    .home-title p{
+        font-size: 20px;
+        font-weight: 200;
+        margin-bottom: 50px;
+        padding: 20px;
+    }
+
+    .btn{
+        font-size: 15px;
+        padding: 5px;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .video{
+        min-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    .video{
+        min-height: 100%;
+        width: auto;
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----- NAV LINKS HEADER -----*/
+
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between; /*Indique comment l'espace entre les éléments doit être réparti*/
+    align-items: center;
+}
+
+
+/*Spécifie un type d'élément précis dans la classe nav*/
+nav img{
+    width: 150px;
+}
+
+.nav-links{
+    flex: 1; /*Pour le faire occuper tout l'espace de la ligne*/
+    text-align: left;
+}
+
+.nav-links ul li{
+    list-style: none;       /*N'affiche pas les puces de la liste*/
+    display: inline-block;  /*Affiche la liste horizontalement*/
+    padding: 8px 12px;
+    position: relative;
+}
+
+
+.nav-links ul li a{
+    color:#fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+
+/*Affiche une ligne sous l'élément.*/
+.nav-links ul li::after{
+    content: '';
+    width: 0%;          /*La largeur est à 0% car elle sera animée quand la souris survolera l'élément.*/
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.5s;   /*Durée de l'animation*/
+}
+
+/*Crée une animation sur la ligne sous les boutons quand la souris survole l'élément.*/
+/** Attention : Ne pas mettre la transition ici car la ligne repassera
+ ** directement à 0% au lieu de faire la transition en sens inverse*/
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+
+
+/*Cache les boutons croix et menu de la version PC du site*/
+nav .fa{
+    display: none;
+}
+
+
+/*Le code dans ce @media sera appliqué à tous les écrans dont la largeur <= 700px*/
+@media(max-width: 700px){
+
+    .nav-links ul li{    
+        display: block;  
+    }
+
+    /*Pour les mobiles, on met la liste dans un panel qu'on cachera avec un bouton*/
+    .nav-links{
+        position: fixed; /*fixed au lieu de absolute pour enlever la barre de défilement horizontale*/
+        background: #3d3d3d;
+        color: white;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        left: -200px;    /*Pour qu'il soit caché au début de l'animation*/
+        text-align: left;
+        z-index: 2;     /*Fait passer la liste devant le reste*/
+        transition: 1s;
+    }
+
+    nav .fa{
+        display: block;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        margin: 10px 10px;
+    }
+
+    .nav-links ul{
+        padding: 30px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*----- CONTACT -----*/
+
+
+
+#header-contact{
+    background: transparent;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(images/backgrounds/toulouse.jpg);
+    
+    /* background-repeat: no-repeat;*/
+    background-position: 90%;
+}
+
+
+
+.header h1{
+    margin: 100px 0;
+    padding-bottom: 50px;
+}
+
+.column{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.contact-col{
+    margin-bottom: 100px;
+}
+
+
+h2{
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: white;
+    font-weight: 400;
+}
+
+
+.icons{
+    margin-bottom: 40px;
+}
+
+.icons .fa{
+    font-size: 50px;
+    color: white;
+    margin: 10px;
+    margin-right: 30px;
+}
+
+
+/*Donne juste un autre CSS au formulaire.*/
+.comment-form input, .comment-form textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    background-color: #3d3d3d;
+    color: #bcbcbc;
+
+}
+
+
+
+.comment-form button{
+    margin: 10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+}
+
+
+
+
+/*Le code dans ce @media sera appliqué à tous les écrans dont la largeur <= 700px*/
+@media(max-width: 700px){
+
+    .column{
+        width: 90%;
+    }
+
+        
+    .icons .fa{
+        margin-right: 10px;
+    }
+}
+
+
+/*Ce champ arrête les pourriels et est invisible aux clients*/
+.comment-form>.description {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---- PORTFOLIO -----*/
+
+
+#header-pf{
+    background: transparent;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(images/backgrounds/node.jpg);
+    
+    /* background-repeat: no-repeat;*/
+    background-position: center;
+}
+
+
+
+.pf-title{
+    margin: 0 50px 50px 50px;
+}
+
+.pf-title h2{
+    color: #515151;
+    font-family: 'Oswald', sans-serif;
+    font-style: italic;
+    font-size: 45px;
+}
+
+.pf-title h2::after{
+
+    /*Ajoute un ligne sous le titre qui prend toute la div*/
+    content: '';
+    height: 2px;
+    background: #515151;
+    display: block;
+}
+
+
+
+
+.pf-grid{
+    display: grid;
+    margin: 0 50px 50px 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.pf-btn{
+    position: relative;
+    overflow: hidden;   /*Pour cacher les bordures d'images qd on les agrandit*/
+    width: 100%;
+    height: 55vh;
+}
+
+.pf-btn img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.pf-btn:hover img{
+    transform: scale(110%);
+}
+
+
+.pf-layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.pf-layer:hover{
+    background: rgba(4, 9, 30, 0.85);
+}
+
+
+.pf-layer h3{
+    font-weight: 500;
+    font-size: 26px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: 0.5s;
+}
+
+.pf-layer:hover h3{
+    opacity: 1;
+    bottom: 60%;
+}
+
+
+.pf-layer h4{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #a1a1a1;
+    opacity: 0;
+
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: 0.5s;
+}
+
+.pf-layer:hover h4{
+    opacity: 1;
+    bottom: 35%;
+}
+
+@media(max-width: 700px){
+    
+    .pf-title h2{
+        font-size: 25px;
+    }
+
+    .pf-grid{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+
+    
+    .pf-btn{
+        width: 100%;
+        height: 25vh;
+    }
+
+    
+    .pf-layer{
+        background: rgba(4, 9, 30, 0.5);
+    }
+
+        
+    .pf-layer h3{
+        font-size: 20px;
+        opacity: 1;
+    }
+}
+
+
+/*ABOUT*/
+
+
+#header-about{
+    background: transparent;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(images/backgrounds/etude.jpg);
+    
+    /* background-repeat: no-repeat;*/
+    background-position: center;
+}
+
+
+.about-title{
+    margin: 0 50px 50px 50px;
+}
+
+.about-title h2{
+    color: #515151;
+    font-family: 'Oswald', sans-serif;
+    font-style: italic;
+    font-size: 45px;
+}
+
+.about-title h2::after{
+
+    /*Ajoute un ligne sous le titre qui prend toute la div*/
+    content: '';
+    height: 2px;
+    background: #515151;
+    display: block;
+}
+
+.about-row{
+    justify-content: space-between;
+    margin: 0 50px 50px 50px;
+}
+
+.display-center {
+    display: flex;
+}
+
+.display-grid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin: 0 50px 50px 50px;
+}
+
+.about-col{
+    margin: 0 20px 0 20px;
+    flex-basis: 48%;
+}
+
+.about-col .about-col-img {
+    /* background-color: green; */
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.about-col img {
+    width: 70%;
+    transform: translateX(25%);
+}
+
+#about-photo-profil{
+    width: 60%;
+    border: 5px solid white;
+}
+
+
+.about-group p{
+    text-align: justify;
+    font-size: 20px;
+}
+
+
+.about-group .text-center{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-col .text-presentation{
+    font-size: 45px;
+}
+
+.about-group .text-margin{
+    margin: 0 20px 0 20px;
+}
+
+.about-tab{
+    flex-basis: 50%;
+    background: #303030;
+}
+
+.about-tab h2{
+    background: #548dff;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 7px;
+    margin-bottom: 20px;
+}
+
+.about-tab div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #555;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+@media(max-width: 700px) {
+
+    .about-title h2 {
+        font-size: 25px;
+    }
+    
+    .display-center {
+        display: block;
+    }
+    
+    .display-grid {
+        display: block;
+    }
+
+    .display-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+
+    .about-col .text-presentation {
+        font-size: 25px;
+    }
+
+    .about-group p {
+        text-align: justify;
+        font-size: 15px;
+    }
+
+    .about-row {
+        margin: 0 50px 50px 50px;
+        /* margin: 0; */
+    }
+    
+    .about-col {
+        margin: 0;
+        /* margin: 0 20px 0 20px; */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*PORTFOLIO PAGE TEMPLATE*/
+
+.pfpage-header{
+    /* background-color: red; */
+}
+
+.home-pfpage-title{
+    margin: 100px 0;
+    padding-bottom: 50px;
+}
+
+.home-pfpage-title {
+    text-align: center;
+    color: white;
+}
+
+.home-pfpage-title h1 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.home-pfpage-title p {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
+    font-style: italic;
+    margin-bottom: 50px;
+    color: #6b6b6b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pfpage-row {
+    justify-content: space-between;
+    margin: 0 50px 50px 50px;
+}
+
+
+.pfpage-col {
+    /* background-color: red; */
+    flex-basis: 48%;
+}
+
+.pfpage-col .col-img {
+    /* background-color: green; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.col-img div{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 55vh;
+}
+
+.col-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pfpage-group p {
+    text-align: justify;
+    font-size: 20px;
+}
+
+
+.pfpage-group .text-center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pfpage-col .text-bold {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.pfpage-group .text-margin {
+    margin: 0 20px 0 20px;
+}
+/* 
+
+.pfpage-citation{
+    font-size: 20px;
+    margin: 0 50px 50px 50px;
+}
+
+.pfpage-citation .text-center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pfpage-citation .text-margin {
+    margin: 0 300px 0 300px;
+}
+
+.pfpage-citation .quote {
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+} */
+
+
+@media(max-width: 700px) {
+
+    .home-pfpage-title{
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .home-pfpage-title h1 {
+        font-size: 30px;
+    }
+
+    .home-pfpage-title p {
+        font-size: 20px;
+    }
+
+    .pfpage-group p {
+        text-align: justify;
+        font-size: 15px;
+    }
+
+    .pfpage-col .text-bold {
+        font-size: 20px;
+        font-weight: 800;
+    }
+    
+    .pfpage-col .col-img {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+
+
+    .col-img div {
+        width: 100%;
+        height: 45vh;
+    }
+
+
+
+}
+
+
+/*----- CUSTOM PF PAGE HEADER -----*/
+#header-pfpage-as {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/as/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: 20%;
+}#header-pfpage-hock {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/hock/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-rdrift {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/rdrift/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-runner {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/runner/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-tower {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/tower/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-zigomar {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/zigomar/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-star {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/star/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-fungi {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/fungi/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-tank {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/tank/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-hack {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/hack/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+}#header-pfpage-ascii-shader {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/ascii-shader/pfimg.jpg);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-dialogue {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/dialogue/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-toon-shader {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/toon-shader/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-gisante {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/gisante/pfimg.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}
