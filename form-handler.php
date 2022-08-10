@@ -10,7 +10,8 @@ $message = $_POST['message'];
 if ($_POST['description'] != "") { die(); }
 if ( ! isset($_POST['description']) ) { die(); }
 
-$email_from = 'info@clementguichard.com'; //L'adresse mail du site. C'est lui qui va nous envoyer le formulaire
+//$email_from = 'info@clementguichard.com'; //L'adresse mail du site. C'est lui qui va nous envoyer le formulaire
+$email_from = 'clement.guichard@e-artsup.net'; //L'adresse mail du site. C'est lui qui va nous envoyer le formulaire
 $email_subject = 'Contact depuis mon site portfolio';
 $email_body = "User name: $name.\n".
              "Email: $email_visitor.\n".
