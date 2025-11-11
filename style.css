@@ -953,4 +953,22 @@ h2{
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 20%;
+}#header-pfpage-bimFlux {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/sxd/bimFlux/Final/heatmap.jpg);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-montargis {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/sxd/montargis/3.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
+}#header-pfpage-ormapost {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.85), rgba(4, 9, 30, 0.85)), url(images/sxd/ormapost/8.png);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 20%;
 }
